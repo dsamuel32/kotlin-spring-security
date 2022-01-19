@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 class SecurityConfig (private val userDetailsService: UserDetailsService) : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity?) {
-        http?.authorizeRequests()?.anyRequest()?.authenticated()
+        http?.authorizeRequests()?.antMatchers("/")?.hasAnyAuthority("LEITURA")?.anyRequest()?.authenticated()
             ?.and()
             ?.sessionManagement()?.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             ?.and()

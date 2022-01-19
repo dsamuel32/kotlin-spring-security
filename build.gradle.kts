@@ -3,8 +3,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("org.springframework.boot") version "2.6.2"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
+    //id("org.jetbrains.kotlin.plugin.noarg") version "1.6.10"
+    //id("org.jetbrains.kotlin.plugin.allopen") version "1.6.10"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
+    kotlin("plugin.jpa") version "1.6.10"
+
 }
 
 group = "br.com.diego"
@@ -29,9 +33,11 @@ dependencies {
     // SECURITY
     implementation("org.springframework.boot:spring-boot-starter-security")
 
+    //DATABASE
     implementation("org.flywaydb:flyway-core:8.4.0")
-    // https://mvnrepository.com/artifact/com.h2database/h2
-    implementation("com.h2database:h2:2.0.206")
+    implementation("org.flywaydb:flyway-mysql:8.4.0")
+    implementation("mysql:mysql-connector-java:8.0.28")
+
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
