@@ -11,7 +11,7 @@ class UsuarioController {
 
     @GetMapping
     fun getUsuario() : Map<String, String> {
-        return mapOf("teste" to "teste")
+        return mapOf("data" to "area segura")
     }
 
 }

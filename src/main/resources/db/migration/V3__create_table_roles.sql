@@ -7,8 +7,8 @@ create table usuarios_pemissoes (
        `id` bigint not null auto_increment primary key ,
        `usuario_id` bigint not null,
        `permissao_id` bigint not null,
-       FOREIGN KEY(`usuario_id`) REFERENCES `usuario`(`id`),
-       FOREIGN KEY(`permissao_id`) REFERENCES `permissoes`(`id`)
+       FOREIGN KEY(`usuario_id`) REFERENCES `usuarios`(`id`),
+       FOREIGN KEY(`permissao_id`) REFERENCES `pemissoes`(`id`)
 );
 
 insert into pemissoes(nome) values('LEITURA');

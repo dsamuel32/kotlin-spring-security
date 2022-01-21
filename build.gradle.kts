@@ -32,6 +32,8 @@ dependencies {
 
     // SECURITY
     implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("io.jsonwebtoken:jjwt:0.9.1")
+
 
     //DATABASE
     implementation("org.flywaydb:flyway-core:8.4.0")
