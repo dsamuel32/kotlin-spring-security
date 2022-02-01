@@ -28,8 +28,8 @@ class JWTLoginFilter(
         chain: FilterChain?,
         authResult: Authentication?
     ) {
-        val usuario = (authResult?.principal as UserDetails).username
-        val token = jwt.gerarToken(usuario)
+        val usuario = (authResult?.principal as UserDetails)
+        val token = jwt.gerarToken(usuario.username, usuario.authorities)
         response?.addHeader("Authorization", "Barear $token")
     }
 }
