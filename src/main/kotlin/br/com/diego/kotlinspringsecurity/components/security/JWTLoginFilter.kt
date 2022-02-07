@@ -17,8 +17,8 @@ class JWTLoginFilter(
 ) : UsernamePasswordAuthenticationFilter() {
 
     override fun attemptAuthentication(request: HttpServletRequest?, response: HttpServletResponse?): Authentication {
-        val(usuario, senha) = ObjectMapper().readValue(request?.inputStream, CredencialDTO::class.java)
-        val token = UsernamePasswordAuthenticationToken(usuario, senha)
+        val(user, password) = ObjectMapper().readValue(request?.inputStream, CredencialDTO::class.java)
+        val token = UsernamePasswordAuthenticationToken(user, password)
         return authManager.authenticate(token)
     }
 
@@ -28,8 +28,8 @@ class JWTLoginFilter(
         chain: FilterChain?,
         authResult: Authentication?
     ) {
-        val usuario = (authResult?.principal as UserDetails)
-        val token = jwt.gerarToken(usuario.username, usuario.authorities)
+        val user = (authResult?.principal as UserDetails)
+        val token = jwt.genareteToken(user.username, user.authorities)
         response?.addHeader("Authorization", "Barear $token")
     }
 }

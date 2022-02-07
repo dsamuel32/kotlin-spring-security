@@ -27,7 +27,7 @@ class SecurityConfig (
         http
             ?.csrf()?.disable()
             ?.authorizeRequests()
-            ?.antMatchers("/usuarios")?.hasAnyAuthority("LEITURA")
+            ?.antMatchers("/users")?.hasAnyAuthority("READ")
             ?.antMatchers(HttpMethod.POST,"/login")?.permitAll()
             ?.anyRequest()?.authenticated()
             ?.and()

@@ -13,15 +13,15 @@ class JWTAuthenticationFilter(private val jwt: JWT) : OncePerRequestFilter() {
         filterChain: FilterChain
     ) {
         val token = request.getHeader("Authorization")
-        val jwtToken = extrairToken(token)
+        val jwtToken = extractToken(token)
 
-        if (jwt.isValido(jwtToken)) {
+        if (jwt.isValid(jwtToken)) {
             SecurityContextHolder.getContext().authentication = jwt.getAuthentication(jwtToken)
         }
         filterChain.doFilter(request, response)
     }
 
-    private fun extrairToken(token: String?) : String? {
+    private fun extractToken(token: String?) : String? {
         return token?.let { jwt ->
             jwt.startsWith("Bearer ")
             jwt.substring(7, jwt.length)

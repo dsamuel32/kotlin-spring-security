@@ -1,1 +1,0 @@
-insert into usuarios(nome, email, senha) values('Diego', 'diego@teste.com', '$2a$12$Ed70zR/w5b8H.opERkAW9OUqOlPto3OLEy9eavaRmTEvhRbRndA5K');

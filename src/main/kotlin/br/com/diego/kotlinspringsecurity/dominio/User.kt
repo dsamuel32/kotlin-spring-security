@@ -5,25 +5,26 @@ import org.springframework.security.core.userdetails.UserDetails
 import javax.persistence.*
 
 @Entity
-@Table(name = "usuarios")
-data class Usuario (
+@Table(name = "users")
+data class User (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null,
-    val nome: String,
-    val senha: String,
+    val name: String,
+    @Column(name = "password")
+    val passWord: String,
     val email: String,
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "usuarios_pemissoes",
-        joinColumns = [ JoinColumn(name = "usuario_id")],
-        inverseJoinColumns = [ JoinColumn(name = "permissao_id") ]
+    @JoinTable(name = "users_pemissions",
+        joinColumns = [ JoinColumn(name = "user_id")],
+        inverseJoinColumns = [ JoinColumn(name = "permission_id") ]
     )
-    val permissoes: Set<Permissao> = mutableSetOf()
+    val permissions: Set<Permission> = mutableSetOf()
 ) : UserDetails {
 
-    override fun getAuthorities() = this.permissoes
+    override fun getAuthorities() = this.permissions
 
-    override fun getPassword() = this.senha
+    override fun getPassword() = this.passWord
 
     override fun getUsername() = this.email
 

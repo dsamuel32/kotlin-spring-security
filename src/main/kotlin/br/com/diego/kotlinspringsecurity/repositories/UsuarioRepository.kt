@@ -1,10 +1,10 @@
 package br.com.diego.kotlinspringsecurity.repositories
 
-import br.com.diego.kotlinspringsecurity.dominio.Usuario
+import br.com.diego.kotlinspringsecurity.dominio.User
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface UsuarioRepository : JpaRepository<Usuario, Long> {
+interface UsuarioRepository : JpaRepository<User, Long> {
 
-    fun findByEmail(email: String?) : Usuario?
+    fun findByEmail(email: String?) : User?
 
 }
